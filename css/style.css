@@ -128,7 +128,7 @@ html {
 
 /* Navigation - FIXED to always stay visible */
 nav {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     right: 0;
@@ -136,13 +136,15 @@ nav {
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    z-index: 10000;
+    z-index: 10000 !important;
     padding: 1.5rem 5%;
     border-bottom: 1px solid var(--border-subtle);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     transform: translateZ(0);
     will-change: padding, background, box-shadow;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
     nav.scrolled {
@@ -267,11 +269,23 @@ nav {
         padding: 0.5rem;
         border-radius: 8px;
         position: relative;
+        background: transparent;
     }
 
         .social-links a:hover {
             color: var(--purple-lighter);
             transform: translateY(-2px) scale(1.1);
+            background: transparent;
+        }
+
+        .social-links a:active,
+        .social-links a:focus {
+            color: var(--text-gray);
+            background: transparent;
+        }
+
+        .social-links a:visited {
+            color: var(--text-gray);
         }
 
 .mobile-social {
@@ -325,18 +339,21 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     z-index: 998;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
     .mobile-menu-overlay.active {
         display: block;
         opacity: 1;
+        pointer-events: auto;
     }
 
 .nav-links a {
@@ -1354,7 +1371,7 @@ nav {
         font-weight: bold;
     }
 
-/* GDPR Cookie Consent */
+/* GDPR Cookie Consent - Fixed at bottom without requiring scroll */
 .cookie-consent {
     position: fixed;
     bottom: 0;
@@ -1364,19 +1381,18 @@ nav {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     padding: 2rem 1.5rem;
-    z-index: 10000;
+    z-index: 10001;
     border-top: 2px solid var(--purple-electric);
     box-shadow: 0 -5px 40px rgba(168, 85, 247, 0.3);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(100%);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
     .cookie-consent.show {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
     }
 
 .cookie-consent-content {
@@ -1689,13 +1705,15 @@ footer {
     }
 }
 
-/* Lazy loading optimization */
+/* Lazy loading optimization - Enhanced with fallbacks */
 .gallery-item[data-bg] {
     background-color: var(--dark-bg);
+    min-height: 300px;
 }
 
 .gallery-item.loaded {
     background-size: cover;
+    background-position: center;
 }
 
 .gallery-item:not(.loaded) {
@@ -1703,6 +1721,18 @@ footer {
     background: linear-gradient(90deg, var(--dark-bg) 0%, var(--darker-bg) 20%, var(--dark-bg) 40%, var(--dark-bg) 100%);
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+/* Fallback for images that fail to load */
+.gallery-item[data-bg]:not(.loaded)::before {
+    content: '📷';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0.3;
+    z-index: 1;
 }
 
 @keyframes skeleton-loading {
@@ -1899,11 +1929,23 @@ footer {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             padding: 0.5rem;
             border-radius: 8px;
+            background: transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
             .mobile-social a:hover {
                 color: var(--purple-lighter);
                 transform: scale(1.1);
+                background: transparent;
+            }
+
+            .mobile-social a:active,
+            .mobile-social a:focus,
+            .mobile-social a:visited {
+                color: var(--text-gray);
+                background: transparent;
             }
 
     .language-switcher {
