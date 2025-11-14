@@ -1,3 +1,12 @@
+/*
+ * DANIS PHOTOGRAPHY - MAIN STYLESHEET
+ * 
+ * MINIFICATION READY:
+ * This CSS file is structured for easy minification.
+ * Use tools like cssnano or clean-css for production builds.
+ * Ensure proper vendor prefixes are maintained during minification.
+ */
+
 * {
     margin: 0;
     padding: 0;
@@ -669,6 +678,110 @@ nav {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Testimonials Section */
+.testimonials {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+    .section-header h2 {
+        font-size: 3rem;
+        font-weight: 300;
+        letter-spacing: 3px;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--text-light) 0%, var(--purple-lighter) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-header p {
+        color: var(--text-gray-light);
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        font-weight: 300;
+    }
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.testimonial-card {
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+    .testimonial-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at top right, var(--purple-glow) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--purple-electric);
+        box-shadow: 0 20px 60px var(--purple-glow);
+    }
+
+        .testimonial-card:hover::before {
+            opacity: 0.3;
+        }
+
+.testimonial-stars {
+    color: var(--purple-electric);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    color: var(--text-gray-light);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+}
+
+.testimonial-author {
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+    .author-name {
+        color: var(--text-light);
+        font-weight: 500;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.5px;
+    }
+
+    .author-service {
+        color: var(--purple-light);
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
 
 /* Page Header */
 .page-header {
@@ -1714,6 +1827,15 @@ footer {
         gap: 2rem;
     }
 
+    .testimonials {
+        padding: 6rem 0;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
     .showcase-content h3 {
         font-size: 1.5rem;
     }
@@ -1864,6 +1986,29 @@ footer {
         grid-template-columns: 1fr;
         gap: 2rem;
         margin-top: 3rem;
+    }
+
+    .testimonials {
+        padding: 4rem 0;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .testimonial-card {
+        padding: 2rem 1.5rem;
     }
 
     .showcase-image {

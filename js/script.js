@@ -1,6 +1,10 @@
 // ============================================
 // ENHANCED DANIS PHOTOGRAPHY WEBSITE
 // Smooth, Appealing & Convenient User Experience
+// 
+// MINIFICATION READY:
+// This file is structured for easy minification.
+// Use tools like UglifyJS or Terser for production builds.
 // ============================================
 
 (function () {
