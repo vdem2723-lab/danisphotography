@@ -567,18 +567,30 @@
                     // Only load if data-bg exists and no inline background-image is set
                     if (bgUrl && !item.style.backgroundImage) {
                         const img = new Image();
+                        
                         img.onload = () => {
                             item.style.backgroundImage = `url(${bgUrl})`;
-                            item.classList.add('loaded');
+                            requestAnimationFrame(() => {
+                                item.classList.add('loaded');
+                            });
                         };
+                        
                         img.onerror = () => {
                             console.warn('Failed to load image:', bgUrl);
-                            item.classList.add('loaded');
+                            // Mark as loaded anyway to remove loading animation
+                            requestAnimationFrame(() => {
+                                item.classList.add('loaded');
+                            });
+                            // Set a fallback gradient or keep the placeholder
+                            item.style.backgroundImage = 'linear-gradient(135deg, var(--darker-bg) 0%, var(--purple-darker) 100%)';
                         };
+                        
                         img.src = bgUrl;
                     } else if (item.style.backgroundImage) {
                         // Already has inline background-image, just mark as loaded
-                        item.classList.add('loaded');
+                        requestAnimationFrame(() => {
+                            item.classList.add('loaded');
+                        });
                     }
 
                     imageObserver.unobserve(item);

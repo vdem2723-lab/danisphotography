@@ -278,14 +278,20 @@ nav {
             background: transparent;
         }
 
+        .social-links a.active,
         .social-links a:active,
         .social-links a:focus {
             color: var(--text-gray);
             background: transparent;
+            transform: none;
         }
 
         .social-links a:visited {
             color: var(--text-gray);
+        }
+
+        .social-links svg {
+            pointer-events: none;
         }
 
 .mobile-social {
@@ -348,12 +354,14 @@ nav {
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
+    visibility: hidden;
 }
 
     .mobile-menu-overlay.active {
         display: block;
         opacity: 1;
         pointer-events: auto;
+        visibility: visible;
     }
 
 .nav-links a {
@@ -1709,11 +1717,14 @@ footer {
 .gallery-item[data-bg] {
     background-color: var(--dark-bg);
     min-height: 300px;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
 }
 
 .gallery-item.loaded {
     background-size: cover;
     background-position: center;
+    opacity: 1;
 }
 
 .gallery-item:not(.loaded) {
@@ -1721,6 +1732,7 @@ footer {
     background: linear-gradient(90deg, var(--dark-bg) 0%, var(--darker-bg) 20%, var(--dark-bg) 40%, var(--dark-bg) 100%);
     background-size: 200% 100%;
     animation: skeleton-loading 1.5s ease-in-out infinite;
+    opacity: 0.6;
 }
 
 /* Fallback for images that fail to load */
