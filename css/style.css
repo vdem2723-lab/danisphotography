@@ -1,3 +1,15 @@
+/* ============================================
+   DANIS PHOTOGRAPHY - MAIN STYLESHEET
+   Author: Danis Photography
+   Description: Photography portfolio website styles
+   
+   MINIFICATION READY:
+   - Remove comments before production deployment
+   - Consider using a CSS minifier (e.g., cssnano, clean-css)
+   - Recommended tools: PostCSS, cssnano, or online minifiers
+   - Target: Reduce file size by ~30-40%
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -537,6 +549,126 @@ nav {
         transform: translateY(10px);
     }
 }
+
+/* Testimonials Section */
+.testimonials {
+    padding: 8rem 0;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+    .section-header h2 {
+        font-size: 3.5rem;
+        font-weight: 300;
+        letter-spacing: 4px;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, var(--text-light) 0%, var(--purple-lighter) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .section-header p {
+        color: var(--text-gray-light);
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        font-weight: 300;
+    }
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.testimonial-card {
+    background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(168, 85, 247, 0.08) 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+    .testimonial-card::before {
+        content: '"';
+        position: absolute;
+        top: 1rem;
+        left: 1.5rem;
+        font-size: 6rem;
+        color: var(--purple-electric);
+        opacity: 0.15;
+        font-family: Georgia, serif;
+        line-height: 1;
+    }
+
+    .testimonial-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--purple-electric) 0%, var(--purple-light) 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .testimonial-card:hover::after {
+        transform: scaleX(1);
+    }
+
+    .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px var(--purple-glow-strong);
+        border-color: var(--purple-electric);
+        background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(168, 85, 247, 0.12) 100%);
+    }
+
+.testimonial-stars {
+    color: var(--purple-light);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.testimonial-text {
+    color: var(--text-gray-light);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    position: relative;
+    z-index: 1;
+}
+
+    .testimonial-author strong {
+        color: var(--purple-lighter);
+        font-size: 1.1rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+    }
+
+    .testimonial-author span {
+        color: var(--text-gray);
+        font-size: 0.9rem;
+        letter-spacing: 0.3px;
+    }
 
 /* Services Showcase Section - FIXED image display */
 .services-showcase {
@@ -1864,6 +1996,28 @@ footer {
         grid-template-columns: 1fr;
         gap: 2rem;
         margin-top: 3rem;
+    }
+
+    .testimonials {
+        padding: 4rem 0;
+    }
+
+    .section-header h2 {
+        font-size: 2.5rem;
+        letter-spacing: 2px;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .testimonial-card {
+        padding: 2rem 1.5rem;
     }
 
     .showcase-image {

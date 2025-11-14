@@ -78,6 +78,61 @@
     }
     </script>
 
+    <!-- Structured Data for Reviews -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Danis Photography",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Emma & Johan"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning and tell our story perfectly. The attention to detail and creative vision exceeded all expectations.",
+          "datePublished": "2024-01-15"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sara Andersson"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully. We couldn't be happier with the results and the entire experience.",
+          "datePublished": "2024-02-20"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Marcus Berg"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Outstanding work for our brand campaign. Danis understood our vision immediately and delivered images that perfectly represent our company values. Highly recommend for commercial projects.",
+          "datePublished": "2024-03-10"
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-374987721"></script>
     <script>
@@ -151,7 +206,7 @@
         <div class="container">
             <div class="services-showcase-grid">
                 <!-- Portrait Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index1.jpg');" data-cta="View Portrait Services">
+                <a href="services.html" class="showcase-card" style="background-image: url('images/index1.jpg');" data-cta="View Portrait Services" role="img" aria-label="Portrait Photography - Professional portrait session example">
                     <div class="showcase-content">
                         <h3>Portrait Photography</h3>
                         <p>Raw emotion frozen in time. Capturing the authentic essence of who you are—from intimate studio sessions to bold environmental portraits that reveal your true spirit.</p>
@@ -159,7 +214,7 @@
                 </a>
 
                 <!-- Event Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index2.jpg');" data-cta="View Event Services">
+                <a href="services.html" class="showcase-card" style="background-image: url('images/index2.jpg');" data-cta="View Event Services" role="img" aria-label="Event Photography - Wedding and celebration photography example">
                     <div class="showcase-content">
                         <h3>Event Photography</h3>
                         <p>Life's precious milestones preserved forever. From intimate vows to grand celebrations, every laugh, tear, and tender moment captured with cinematic beauty.</p>
@@ -167,12 +222,48 @@
                 </a>
 
                 <!-- Commercial Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index3.jpg');" data-cta="View Commercial Services">
+                <a href="services.html" class="showcase-card" style="background-image: url('images/index3.jpg');" data-cta="View Commercial Services" role="img" aria-label="Commercial Photography - Professional brand photography example">
                     <div class="showcase-content">
                         <h3>Commercial Photography</h3>
                         <p>Visionary storytelling for bold brands. Creative concepts that command attention, executed with precision and artistic flair that elevates your vision.</p>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Client Stories</h2>
+                <p>Hear from those who trusted us to capture their moments</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning and tell our story perfectly. The attention to detail and creative vision exceeded all expectations."</p>
+                    <div class="testimonial-author">
+                        <strong>Emma & Johan</strong>
+                        <span>Wedding Photography, 2024</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully. We couldn't be happier with the results and the entire experience."</p>
+                    <div class="testimonial-author">
+                        <strong>Sara Andersson</strong>
+                        <span>Family Portraits, 2024</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">"Outstanding work for our brand campaign. Danis understood our vision immediately and delivered images that perfectly represent our company values. Highly recommend for commercial projects."</p>
+                    <div class="testimonial-author">
+                        <strong>Marcus Berg</strong>
+                        <span>Commercial Photography, 2024</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
