@@ -1,6 +1,13 @@
 // ============================================
-// ENHANCED DANIS PHOTOGRAPHY WEBSITE
-// Smooth, Appealing & Convenient User Experience
+// DANIS PHOTOGRAPHY - MAIN JAVASCRIPT
+// Author: Danis Photography
+// Description: Interactive features and functionality
+//
+// MINIFICATION READY:
+// - Remove comments and console.logs before production
+// - Recommended minifiers: Terser, UglifyJS, or Google Closure Compiler
+// - Consider bundling with webpack/rollup for optimal performance
+// - Target: Reduce file size by ~40-50%
 // ============================================
 
 (function () {
