@@ -46,7 +46,8 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    transform: translateZ(0);
+    /* Removed transform: translateZ(0) to fix cookie banner positioning */
+    /* The transform was creating a new containing block for position:fixed elements */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
@@ -275,6 +276,13 @@ nav {
         .social-links a:hover {
             color: var(--purple-lighter);
             transform: translateY(-2px) scale(1.1);
+        }
+
+        .social-links a:active,
+        .social-links a:focus,
+        .social-links a:visited {
+            color: var(--text-gray);
+            background: transparent;
         }
 
         .social-links svg {
@@ -1790,15 +1798,20 @@ footer {
     opacity: 0.6;
 }
 
-/* Fallback for images that fail to load */
+/* Fallback for images that fail to load - no emoji, just gradient */
 .gallery-item[data-bg]:not(.loaded)::before {
-    content: '📷';
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 3rem;
-    opacity: 0.3;
+    width: 60px;
+    height: 60px;
+    border: 3px solid var(--purple-electric);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    opacity: 0.5;
     z-index: 1;
 }
 
