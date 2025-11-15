@@ -846,7 +846,7 @@ nav {
 
 .gallery-item {
     aspect-ratio: 1;
-    background: linear-gradient(135deg, var(--darker-bg) 0%, var(--purple-darker) 100%);
+    background: var(--darker-bg);
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1386,6 +1386,33 @@ nav {
         font-weight: bold;
     }
 
+/* Section Scroll Indicator - Between Services and Testimonials */
+.section-scroll-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0;
+    position: relative;
+}
+
+.scroll-arrow {
+    font-size: 2.5rem;
+    color: var(--purple-lighter);
+    animation: bounce 2s infinite;
+    text-shadow: 0 0 20px var(--purple-glow);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-arrow::before {
+    content: '↓';
+}
+
+.scroll-arrow:hover {
+    color: var(--text-light);
+    transform: scale(1.2);
+}
+
 /* GDPR Cookie Consent - Fixed at bottom without requiring scroll */
 .cookie-consent {
     position: fixed;
@@ -1396,18 +1423,19 @@ nav {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     padding: 2rem 1.5rem;
-    z-index: 9999;
+    z-index: 10001;
     border-top: 2px solid var(--purple-electric);
     box-shadow: 0 -5px 40px rgba(168, 85, 247, 0.3);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(0);
-    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(100%);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
     .cookie-consent.show {
         opacity: 1;
         visibility: visible;
+        transform: translateY(0);
     }
 
 .cookie-consent-content {
