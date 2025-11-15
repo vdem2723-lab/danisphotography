@@ -142,10 +142,15 @@ nav {
     border-bottom: 1px solid var(--border-subtle);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Prevent rendering artifacts and layout shifts */
     transform: translateZ(0);
     will-change: padding, background, box-shadow;
     visibility: visible !important;
     opacity: 1 !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
     nav.scrolled {
@@ -173,6 +178,9 @@ nav {
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
+    /* Prevent rendering artifacts */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
     .logo .highlight {
@@ -189,6 +197,11 @@ nav {
         height: 2px;
         background: linear-gradient(90deg, var(--purple-electric), var(--purple-light));
         transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Prevent rendering artifacts */
+        will-change: width;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        pointer-events: none;
     }
 
     .logo:hover::after {
@@ -215,16 +228,16 @@ nav {
         border: 1px solid transparent;
         font-weight: 500;
         position: relative;
+        /* Prevent layout shifts during transitions */
+        will-change: transform;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
 
+        /* Remove problematic ::before pseudo-element that causes white rectangles */
         .language-switcher a::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 8px;
-            background: var(--purple-glow);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            content: none;
+            display: none;
         }
 
         .language-switcher a:hover {
@@ -233,10 +246,6 @@ nav {
             background: rgba(168, 85, 247, 0.15);
             transform: translateY(-2px);
         }
-
-            .language-switcher a:hover::before {
-                opacity: 0.2;
-            }
 
         .language-switcher a.active {
             color: var(--text-light);
@@ -375,6 +384,9 @@ nav {
     padding: 5px 0;
     font-weight: 500;
     white-space: nowrap;
+    /* Prevent rendering artifacts during transitions */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
     .nav-links > li > a::before {
@@ -387,6 +399,11 @@ nav {
         height: 2px;
         background: linear-gradient(90deg, transparent, var(--purple-light), transparent);
         transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Ensure pseudo-element doesn't cause artifacts */
+        will-change: width;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        pointer-events: none;
     }
 
     .nav-links > li > a:hover::before,
