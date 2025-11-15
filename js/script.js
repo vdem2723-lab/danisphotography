@@ -476,29 +476,20 @@
 
         if (!toggle || !navLinks) return;
 
-        // Add accessibility attributes to the toggle
-        toggle.setAttribute('role', 'button');
-        toggle.setAttribute('aria-label', 'Toggle mobile menu');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-controls', 'navLinks');
-        toggle.setAttribute('tabindex', '0');
-
         document.body.appendChild(overlay);
 
         const closeMenu = () => {
             toggle.classList.remove('active');
-            navLinks.classList.remove('active', 'open');
+            navLinks.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
-            toggle.setAttribute('aria-expanded', 'false');
         };
 
         const openMenu = () => {
             toggle.classList.add('active');
-            navLinks.classList.add('active', 'open');
+            navLinks.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            toggle.setAttribute('aria-expanded', 'true');
         };
 
         toggle.addEventListener('click', () => {
@@ -506,18 +497,6 @@
                 closeMenu();
             } else {
                 openMenu();
-            }
-        });
-
-        // Make toggle keyboard operable with Enter and Space
-        toggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (toggle.classList.contains('active')) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
             }
         });
 
@@ -808,27 +787,20 @@
             document.body.classList.remove('keyboard-nav');
         });
 
-        // Make gallery items accessible (only for non-button elements)
+        // Make gallery items accessible
         document.querySelectorAll('.gallery-item').forEach((item, index) => {
-            // Buttons are already keyboard accessible, only enhance divs
-            if (item.tagName !== 'BUTTON') {
-                item.setAttribute('tabindex', '0');
-                item.setAttribute('role', 'button');
-                
-                item.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        item.click();
-                    }
-                });
-            }
-            
-            // Update aria-label for better context if not already set
-            if (!item.getAttribute('aria-label')) {
-                const lang = utils.getLanguage();
-                const label = lang === 'sv' ? `Se bild ${index + 1}` : `View image ${index + 1}`;
-                item.setAttribute('aria-label', label);
-            }
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+            const lang = utils.getLanguage();
+            const label = lang === 'sv' ? `Se bild ${index + 1}` : `View image ${index + 1}`;
+            item.setAttribute('aria-label', label);
+
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
         });
     }
 

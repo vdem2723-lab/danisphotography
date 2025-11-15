@@ -543,17 +543,6 @@ nav {
             width: 80%;
         }
 
-.trust-statement {
-    margin-top: 1.5rem;
-    font-size: 0.95rem;
-    color: var(--text-gray);
-    text-align: center;
-    max-width: 500px;
-    line-height: 1.6;
-    font-weight: 300;
-    opacity: 0.9;
-}
-
 .scroll-indicator {
     margin-top: 2rem;
     animation: bounce 2s infinite;
@@ -873,11 +862,6 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     will-change: transform;
-    /* Button reset for semantic button elements */
-    padding: 0;
-    width: 100%;
-    font: inherit;
-    color: inherit;
 }
 
     .gallery-item::before {
@@ -905,14 +889,6 @@ nav {
     }
 
     .gallery-item:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 60px var(--purple-glow-strong);
-        border-color: var(--purple-light);
-    }
-
-    .gallery-item:focus {
-        outline: 2px solid var(--purple-electric);
-        outline-offset: 2px;
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 20px 60px var(--purple-glow-strong);
         border-color: var(--purple-light);
