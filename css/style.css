@@ -275,19 +275,11 @@ nav {
         .social-links a:hover {
             color: var(--purple-lighter);
             transform: translateY(-2px) scale(1.1);
-            background: transparent;
         }
 
-        .social-links a.active,
-        .social-links a:active,
-        .social-links a:focus {
-            color: var(--text-gray);
-            background: transparent;
-            transform: none;
-        }
-
-        .social-links a:visited {
-            color: var(--text-gray);
+        .social-links a:active {
+            color: var(--purple-lighter);
+            transform: translateY(-2px) scale(1.1);
         }
 
         .social-links svg {
@@ -341,12 +333,11 @@ nav {
     }
 
 .mobile-menu-overlay {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -358,7 +349,6 @@ nav {
 }
 
     .mobile-menu-overlay.active {
-        display: block;
         opacity: 1;
         pointer-events: auto;
         visibility: visible;
@@ -1601,16 +1591,16 @@ footer {
 .lightbox {
     display: none;
     position: fixed;
-    z-index: 9999;
+    z-index: 10002;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.97);
     justify-content: center;
     align-items: center;
     padding: 20px;
-    overflow-y: auto;
+    overflow: hidden;
     backdrop-filter: blur(10px);
 }
 

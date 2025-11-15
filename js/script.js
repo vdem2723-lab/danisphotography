@@ -181,7 +181,7 @@
             declineBtn.addEventListener('click', () => this.decline());
 
             requestAnimationFrame(() => {
-                setTimeout(() => this.banner.classList.add('show'), 1000);
+                setTimeout(() => this.banner.classList.add('show'), 100);
             });
         },
 
@@ -644,6 +644,7 @@
             currentIndex = index;
             updateLightboxImage();
             lightbox.classList.add('active');
+            lightbox.scrollTop = 0;
             document.body.style.overflow = 'hidden';
             // Preload next and previous images
             preloadAdjacentImages();
@@ -658,7 +659,13 @@
             lightboxImg.style.opacity = '0';
             setTimeout(() => {
                 lightboxImg.src = images[currentIndex];
-                lightboxImg.style.opacity = '1';
+                lightboxImg.onload = () => {
+                    lightboxImg.style.opacity = '1';
+                };
+                lightboxImg.onerror = () => {
+                    console.error('Failed to load image:', images[currentIndex]);
+                    lightboxImg.style.opacity = '1';
+                };
             }, 150);
         }
 
