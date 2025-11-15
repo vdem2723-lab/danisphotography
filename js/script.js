@@ -521,6 +521,14 @@
         const navbar = document.getElementById('navbar');
         if (!navbar) return;
     
+        // Force a repaint on page load to prevent any rendering artifacts
+        requestAnimationFrame(() => {
+            navbar.style.opacity = '0.9999';
+            requestAnimationFrame(() => {
+                navbar.style.opacity = '1';
+            });
+        });
+    
         const handleScroll = utils.rafThrottle(() => {
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
