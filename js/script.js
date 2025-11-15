@@ -644,6 +644,7 @@
             currentIndex = index;
             updateLightboxImage();
             lightbox.classList.add('active');
+            lightbox.scrollTop = 0;
             document.body.style.overflow = 'hidden';
             // Preload next and previous images
             preloadAdjacentImages();
