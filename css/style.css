@@ -1948,12 +1948,12 @@ footer {
     }
 
     .social-links {
-        margin-left: 1.2rem;
+        margin-left: 2.5rem;
         gap: 0.9rem;
     }
 
     .language-switcher {
-        margin-left: 1.5rem;
+        margin-left: 2.5rem;
     }
 }
 
@@ -1968,11 +1968,11 @@ footer {
 
     .social-links {
         gap: 0.8rem;
-        margin-left: 1rem;
+        margin-left: 2.5rem;
     }
 
     .language-switcher {
-        margin-left: 1rem;
+        margin-left: 2.5rem;
         gap: 0.4rem;
     }
 
@@ -1998,7 +1998,7 @@ footer {
 
     .social-links {
         gap: 0.7rem;
-        margin-left: 0.8rem;
+        margin-left: 2.5rem;
     }
 
     .hero-content h1 {
