@@ -180,9 +180,7 @@
             const declineBtn = this.banner.querySelector('.decline');
             declineBtn.addEventListener('click', () => this.decline());
 
-            requestAnimationFrame(() => {
-                setTimeout(() => this.banner.classList.add('show'), 100);
-            });
+            this.banner.classList.add('show');
         },
 
         accept: function () {
@@ -810,7 +808,6 @@
     function optimizePerformance() {
         if (utils.isLowEndDevice()) {
             document.documentElement.style.setProperty('--transition-smooth', 'ease');
-            console.log('Low-end device detected: Optimizations applied');
         }
     }
 
@@ -865,7 +862,6 @@
             scrollToTop.init();
             formHandler.init();
 
-            console.log('✅ Website initialized successfully');
         } catch (error) {
             console.error('❌ Error during initialization:', error);
         }

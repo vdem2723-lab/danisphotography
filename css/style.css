@@ -277,11 +277,6 @@ nav {
             transform: translateY(-2px) scale(1.1);
         }
 
-        .social-links a:active {
-            color: var(--purple-lighter);
-            transform: translateY(-2px) scale(1.1);
-        }
-
         .social-links svg {
             pointer-events: none;
         }
@@ -844,8 +839,8 @@ nav {
 /* Gallery */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
     padding: 3rem 0;
 }
 
@@ -901,6 +896,28 @@ nav {
         .gallery-item:hover::after {
             opacity: 1;
         }
+
+/* Gallery loading skeleton */
+.gallery-item.loading {
+    background: linear-gradient(
+        90deg,
+        var(--darker-bg) 0%,
+        rgba(168, 85, 247, 0.1) 50%,
+        var(--darker-bg) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
 
 /* Services Grid */
 .services-grid {
@@ -1379,7 +1396,7 @@ nav {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     padding: 2rem 1.5rem;
-    z-index: 10001;
+    z-index: 9999;
     border-top: 2px solid var(--purple-electric);
     box-shadow: 0 -5px 40px rgba(168, 85, 247, 0.3);
     opacity: 0;
@@ -1632,48 +1649,68 @@ footer {
 
 .lightbox-close {
     position: absolute;
-    top: -50px;
-    right: 0;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
     color: var(--text-light);
-    font-size: 2.5rem;
+    font-size: 2rem;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     font-weight: 300;
     line-height: 1;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    z-index: 10;
 }
 
     .lightbox-close:hover {
-        color: var(--purple-lighter);
-        transform: rotate(90deg) scale(1.2);
+        background: var(--purple);
+        color: var(--text-light);
+        transform: rotate(90deg) scale(1.1);
+        border-color: var(--purple-light);
+        box-shadow: 0 0 20px var(--purple-glow);
     }
 
 .lightbox-nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
     color: var(--text-light);
-    font-size: 3rem;
+    font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 1.5rem 1rem;
     user-select: none;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
     .lightbox-nav:hover {
-        color: var(--purple-lighter);
-        background: rgba(168, 85, 247, 0.3);
+        background: var(--purple);
+        color: var(--text-light);
+        transform: translateY(-50%) scale(1.15);
+        border-color: var(--purple-light);
+        box-shadow: 0 0 20px var(--purple-glow);
     }
 
 .lightbox-prev {
-    left: 20px;
+    left: 30px;
 }
 
 .lightbox-next {
-    right: 20px;
+    right: 30px;
 }
 
 @keyframes fadeIn {
@@ -2004,7 +2041,7 @@ footer {
     }
 
     .hero-content h1 {
-        font-size: 2.8rem;
+        font-size: 3rem;
         letter-spacing: 4px;
     }
 
@@ -2213,7 +2250,7 @@ footer {
     }
 
     .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 1rem;
     }
 
