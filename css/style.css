@@ -278,11 +278,17 @@ nav {
             transform: translateY(-2px) scale(1.1);
         }
 
+        .social-links a:link,
+        .social-links a:visited,
         .social-links a:active,
-        .social-links a:focus,
-        .social-links a:visited {
+        .social-links a:focus {
             color: var(--text-gray);
             background: transparent;
+        }
+
+        .social-links a:focus-visible {
+            outline: 2px solid var(--purple-light);
+            outline-offset: 2px;
         }
 
         .social-links svg {
@@ -553,7 +559,7 @@ nav {
 
     .scroll-indicator::before {
         content: '↓';
-        font-size: 2rem;
+        font-size: 2.5rem;
         color: var(--purple-lighter);
         text-shadow: 0 0 20px var(--purple-glow);
     }
@@ -2021,11 +2027,17 @@ footer {
                 background: transparent;
             }
 
+            .mobile-social a:link,
+            .mobile-social a:visited,
             .mobile-social a:active,
-            .mobile-social a:focus,
-            .mobile-social a:visited {
+            .mobile-social a:focus {
                 color: var(--text-gray);
                 background: transparent;
+            }
+
+            .mobile-social a:focus-visible {
+                outline: 2px solid var(--purple-light);
+                outline-offset: 2px;
             }
 
     .language-switcher {
