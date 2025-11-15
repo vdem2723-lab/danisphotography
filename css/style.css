@@ -272,7 +272,7 @@ nav {
         border-radius: 8px;
         position: relative;
         background: transparent !important;
-        text-decoration: none;
+        text-decoration: none !important;
     }
 
         .social-links a:hover {
@@ -2016,7 +2016,7 @@ footer {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
+            text-decoration: none !important;
         }
 
             .mobile-social a:hover {
