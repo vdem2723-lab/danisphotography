@@ -141,16 +141,18 @@ nav {
     padding: 1.5rem 5%;
     border-bottom: 1px solid var(--border-subtle);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    /* Prevent rendering artifacts and layout shifts */
-    transform: translateZ(0);
-    will-change: padding, background, box-shadow;
-    visibility: visible !important;
-    opacity: 1 !important;
+    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    /* Hardware acceleration for smooth rendering */
+    transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* Ensure nav is always visible and stable */
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* Prevent any layout shifts during page transitions */
+    contain: layout style;
 }
 
     nav.scrolled {
@@ -174,7 +176,7 @@ nav {
     letter-spacing: 2px;
     position: relative;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease;
     text-decoration: none;
     display: inline-block;
     white-space: nowrap;
@@ -196,12 +198,9 @@ nav {
         width: 0;
         height: 2px;
         background: linear-gradient(90deg, var(--purple-electric), var(--purple-light));
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        /* Prevent rendering artifacts */
-        will-change: width;
+        transition: width 0.3s ease;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-        pointer-events: none;
     }
 
     .logo:hover::after {
@@ -222,22 +221,23 @@ nav {
         text-decoration: none;
         padding: 0.5rem 0.8rem;
         border-radius: 8px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s ease;
         font-size: 0.9rem;
         letter-spacing: 1px;
         border: 1px solid transparent;
         font-weight: 500;
         position: relative;
-        /* Prevent layout shifts during transitions */
-        will-change: transform;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
+        /* Explicitly prevent any pseudo-elements that could cause artifacts */
+        background-clip: padding-box;
     }
 
-        /* Remove problematic ::before pseudo-element that causes white rectangles */
-        .language-switcher a::before {
-            content: none;
-            display: none;
+        /* Completely remove any pseudo-element that could cause white rectangles */
+        .language-switcher a::before,
+        .language-switcher a::after {
+            content: none !important;
+            display: none !important;
         }
 
         .language-switcher a:hover {
@@ -270,10 +270,9 @@ nav {
 }
 
     .social-links a {
-        /* Force base color for all states */
         color: var(--text-gray) !important;
         font-size: 1.3rem;
-        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: color 0.3s ease, transform 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -282,10 +281,13 @@ nav {
         position: relative;
         background: transparent !important;
         text-decoration: none !important;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
     
-        /* Ensure no underline pseudo-element */
-        .social-links a::before {
+        /* Completely remove any pseudo-elements that could cause artifacts */
+        .social-links a::before,
+        .social-links a::after {
             content: none !important;
             display: none !important;
         }
@@ -302,7 +304,6 @@ nav {
 
         .social-links svg {
             pointer-events: none;
-            /* Ensure SVG inherits link color */
             fill: currentColor;
         }
 
@@ -377,14 +378,13 @@ nav {
 .nav-links > li > a {
     color: var(--text-gray);
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: color 0.3s ease;
     font-size: 0.95rem;
     letter-spacing: 0.5px;
     position: relative;
     padding: 5px 0;
     font-weight: 500;
     white-space: nowrap;
-    /* Prevent rendering artifacts during transitions */
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
@@ -398,12 +398,9 @@ nav {
         width: 0;
         height: 2px;
         background: linear-gradient(90deg, transparent, var(--purple-light), transparent);
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        /* Ensure pseudo-element doesn't cause artifacts */
-        will-change: width;
+        transition: width 0.3s ease;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
-        pointer-events: none;
     }
 
     .nav-links > li > a:hover::before,
