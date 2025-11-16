@@ -524,6 +524,10 @@
         let lastFocusableElement = null;
         let previouslyFocusedElement = null;
 
+        // Touch gesture support
+        let touchStartY = 0;
+        let touchEndY = 0;
+
         const updateFocusableElements = () => {
             focusableElements = Array.from(navLinks.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
             firstFocusableElement = focusableElements[0];
@@ -558,6 +562,7 @@
             }
         };
 
+        // Click/tap toggle
         toggle.addEventListener('click', () => {
             if (toggle.classList.contains('active')) {
                 closeMenu();
@@ -565,6 +570,35 @@
                 openMenu();
             }
         });
+
+        // Keyboard support for toggle
+        toggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (toggle.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+        });
+
+        // Swipe down to close (mobile gesture)
+        navLinks.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        navLinks.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            // Swipe down to close (threshold: 100px)
+            if (touchEndY - touchStartY > 100) {
+                closeMenu();
+            }
+        };
 
         // Focus trap inside menu
         navLinks.addEventListener('keydown', (e) => {

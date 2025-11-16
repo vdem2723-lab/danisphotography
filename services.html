@@ -36,6 +36,30 @@
     <link rel="alternate" hreflang="sv" href="https://danisphotography.se/sv/services.html">
     <link rel="alternate" hreflang="x-default" href="https://danisphotography.se/services.html">
 
+    <!-- Critical CSS to prevent white flash on navigation -->
+    <style>
+        nav {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 10000 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        nav * {
+            color: #FFFFFF !important;
+        }
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+    </style>
+
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Google Consent Mode Default -->
