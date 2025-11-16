@@ -5,19 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danis Photography - Stockholm Porträtt & Eventfotografi</title>
     <meta name="description" content="Professionell porträtt- och eventfotografi i Stockholm. Bröllopsfoto, familjeporträtt, företagsevenemang och kommersiell fotografering. Boka din fotosession idag.">
+
+    <!-- Canonical and hreflang -->
+    <link rel="canonical" href="https://danisphotography.se/sv/index.html">
+    <link rel="alternate" href="https://danisphotography.se/" hreflang="en-se">
+    <link rel="alternate" href="https://danisphotography.se/sv/index.html" hreflang="sv-se">
+    <link rel="alternate" href="https://danisphotography.se/" hreflang="x-default">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://danisphotography.se/sv/index.html">
     <meta property="og:title" content="Danis Photography - Stockholm Porträtt & Eventfotografi">
     <meta property="og:description" content="Professionell porträtt- och eventfotografi i Stockholm.">
     <meta property="og:image" content="https://danisphotography.se/images/og-image.png">
+    <meta property="og:site_name" content="Danis Photography">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:locale:alternate" content="en_SE">
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://danisphotography.se/sv/index.html">
-    <meta property="twitter:title" content="Danis Photography - Stockholm Porträtt & Eventfotografi">
-    <meta property="twitter:description" content="Professionell porträtt- och eventfotografi i Stockholm.">
-    <meta property="twitter:image" content="https://danisphotography.se/images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://danisphotography.se/sv/index.html">
+    <meta name="twitter:title" content="Danis Photography - Stockholm Porträtt & Eventfotografi">
+    <meta name="twitter:description" content="Professionell porträtt- och eventfotografi i Stockholm.">
+    <meta name="twitter:image" content="https://danisphotography.se/images/og-image.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
@@ -35,20 +45,32 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-374987721"></script>
+    <!-- Google Consent Mode v2 -->
     <script>
+        // Default consent to denied for both categories
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
+        
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
+        });
+        
         gtag('js', new Date());
         gtag('config', 'G-374987721');
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-374987721"></script>
+
     <!-- Structured Data for Local Business -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
+      "@type": "LocalBusiness",
       "name": "Danis Photography",
       "image": "https://danisphotography.se/images/Danis.jpg",
       "@id": "https://danisphotography.se",
@@ -84,6 +106,52 @@
       "sameAs": [
         "https://www.instagram.com/thisisdanis",
         "https://www.facebook.com/people/Fotograf-Danis/61583451755900/"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "3"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Emma & Johan"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning and tell our story perfectly. The attention to detail and creative vision exceeded all expectations.",
+          "datePublished": "2024-01-15"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Sara Andersson"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully. We couldn't be happier with the results and the entire experience.",
+          "datePublished": "2024-02-20"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Marcus Berg"
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "Outstanding work for our brand campaign. Danis understood our vision immediately and delivered images that perfectly represent our company values. Highly recommend for commercial projects.",
+          "datePublished": "2024-03-10"
+        }
       ]
     }
     </script>
