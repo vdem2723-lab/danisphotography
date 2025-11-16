@@ -38,6 +38,43 @@
     --error-color: #EF4444;
 }
 
+/* ============================================
+   ACCESSIBILITY - Skip to Content Link
+   ============================================ */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--purple-electric);
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    z-index: 10002;
+    border-radius: 0 0 8px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--purple-lighter);
+    outline-offset: 3px;
+}
+
+/* Visually Hidden Utility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background-color: var(--black);
@@ -2207,7 +2244,8 @@ footer {
         z-index: 10000;
     }
 
-        .nav-links.active {
+        .nav-links.active,
+        nav.open .nav-links {
             opacity: 1;
             visibility: visible;
             transform: scale(1);
