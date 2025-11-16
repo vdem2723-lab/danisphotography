@@ -127,40 +127,6 @@
     };
 
     // ============================================
-    // GOOGLE ANALYTICS LOADER
-    // ============================================
-    const analytics = {
-        loaded: false,
-
-        loadGA: function () {
-            if (this.loaded) return;
-
-            // Inject Google Analytics script
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-374987721';
-            document.head.appendChild(script);
-
-            // Initialize gtag
-            window.dataLayer = window.dataLayer || [];
-            function gtag() { dataLayer.push(arguments); }
-            window.gtag = gtag;
-            gtag('js', new Date());
-            gtag('config', 'G-374987721');
-
-            this.loaded = true;
-        },
-
-        updateConsent: function (granted) {
-            if (typeof gtag === 'function') {
-                gtag('consent', 'update', {
-                    'analytics_storage': granted ? 'granted' : 'denied'
-                });
-            }
-        }
-    };
-
-    // ============================================
     // GDPR COOKIE CONSENT
     // ============================================
     const cookieConsent = {
@@ -168,13 +134,7 @@
 
         init: function () {
             const persistentConsent = this.getConsent();
-            if (persistentConsent) {
-                if (persistentConsent === 'accepted') {
-                    analytics.loadGA();
-                }
-                return;
-            }
-            if (sessionStorage.getItem('cookieBannerShown')) return;
+            if (persistentConsent || sessionStorage.getItem('cookieBannerShown')) return;
             this.createBanner();
         },
 
@@ -225,14 +185,11 @@
 
         accept: function () {
             this.setConsent('accepted');
-            analytics.updateConsent(true);
-            analytics.loadGA();
             this.hide();
         },
 
         decline: function () {
             this.setConsent('declined');
-            analytics.updateConsent(false);
             this.hide();
         },
 
@@ -495,12 +452,6 @@
         const bgAnimation = document.querySelector('.bg-animation');
         if (!bgAnimation) return;
 
-        // Respect prefers-reduced-motion
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (prefersReducedMotion) {
-            return; // Don't create particles if user prefers reduced motion
-        }
-
         const particleCount = utils.isLowEndDevice() ? 15 : 30;
 
         for (let i = 0; i < particleCount; i++) {
@@ -519,120 +470,31 @@
     function initMobileMenu() {
         const toggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
-        const navbar = document.getElementById('navbar');
         const overlay = utils.createElement('div', 'mobile-menu-overlay');
-        const mobileSocial = document.querySelector('.mobile-social');
 
         if (!toggle || !navLinks) return;
 
         document.body.appendChild(overlay);
 
-        // Move mobile social icons into menu on mobile
-        if (mobileSocial && window.innerWidth <= 768) {
-            navLinks.appendChild(mobileSocial);
-        }
-
-        let focusableElements = [];
-        let firstFocusableElement = null;
-        let lastFocusableElement = null;
-        let previouslyFocusedElement = null;
-
-        // Touch gesture support
-        let touchStartY = 0;
-        let touchEndY = 0;
-
-        const updateFocusableElements = () => {
-            focusableElements = Array.from(navLinks.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
-            firstFocusableElement = focusableElements[0];
-            lastFocusableElement = focusableElements[focusableElements.length - 1];
-        };
-
         const closeMenu = () => {
             toggle.classList.remove('active');
             navLinks.classList.remove('active');
-            navbar.classList.remove('open');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
-            toggle.setAttribute('aria-expanded', 'false');
-
-            // Restore focus
-            if (previouslyFocusedElement) {
-                previouslyFocusedElement.focus();
-            }
         };
 
         const openMenu = () => {
             toggle.classList.add('active');
             navLinks.classList.add('active');
-            navbar.classList.add('open');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-            toggle.setAttribute('aria-expanded', 'true');
-
-            // Store currently focused element and move focus to menu
-            previouslyFocusedElement = document.activeElement;
-            updateFocusableElements();
-            if (firstFocusableElement) {
-                firstFocusableElement.focus();
-            }
         };
 
-        // Click/tap toggle
         toggle.addEventListener('click', () => {
             if (toggle.classList.contains('active')) {
                 closeMenu();
             } else {
                 openMenu();
-            }
-        });
-
-        // Keyboard support for toggle
-        toggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (toggle.classList.contains('active')) {
-                    closeMenu();
-                } else {
-                    openMenu();
-                }
-            }
-        });
-
-        // Swipe down to close (mobile gesture)
-        navLinks.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        navLinks.addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-            handleSwipe();
-        }, { passive: true });
-
-        const handleSwipe = () => {
-            // Swipe down to close (threshold: 100px)
-            if (touchEndY - touchStartY > 100) {
-                closeMenu();
-            }
-        };
-
-        // Focus trap inside menu
-        navLinks.addEventListener('keydown', (e) => {
-            if (!toggle.classList.contains('active')) return;
-
-            if (e.key === 'Tab') {
-                if (e.shiftKey) {
-                    // Shift + Tab
-                    if (document.activeElement === firstFocusableElement) {
-                        e.preventDefault();
-                        lastFocusableElement.focus();
-                    }
-                } else {
-                    // Tab
-                    if (document.activeElement === lastFocusableElement) {
-                        e.preventDefault();
-                        firstFocusableElement.focus();
-                    }
-                }
             }
         });
 
@@ -687,22 +549,10 @@
     
         navLinks.forEach(link => {
             const linkPage = link.getAttribute('href').split('/').pop() || 'index.html';
-            // Remove any existing active class and aria-current first
+            // Remove any existing active class first
             link.classList.remove('active');
-            link.removeAttribute('aria-current');
             if (linkPage === currentPage) {
                 link.classList.add('active');
-                link.setAttribute('aria-current', 'page');
-            }
-        });
-
-        // Also handle language switcher
-        const langLinks = document.querySelectorAll('.language-switcher a');
-        langLinks.forEach(link => {
-            if (link.classList.contains('active')) {
-                link.setAttribute('aria-current', 'page');
-            } else {
-                link.removeAttribute('aria-current');
             }
         });
     }
@@ -997,30 +847,6 @@
     }
 
     // ============================================
-    // TESTIMONIAL REVEAL ANIMATION
-    // ============================================
-    function initTestimonialReveal() {
-        const testimonialCards = document.querySelectorAll('.testimonial-card');
-        if (!testimonialCards.length) return;
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('reveal');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        testimonialCards.forEach(card => {
-            revealObserver.observe(card);
-        });
-    }
-
-    // ============================================
     // INITIALIZATION
     // ============================================
     function init() {
@@ -1041,17 +867,8 @@
             initAccessibility();
             optimizePerformance();
             initVisibilityHandling();
-            initTestimonialReveal();
             scrollToTop.init();
             formHandler.init();
-
-            // Global handler for privacy links
-            document.addEventListener('click', (e) => {
-                if (e.target.matches('.privacy-link')) {
-                    e.preventDefault();
-                    privacyModal.show();
-                }
-            });
 
         } catch (error) {
             console.error('❌ Error during initialization:', error);
