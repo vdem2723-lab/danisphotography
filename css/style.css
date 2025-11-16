@@ -2523,3 +2523,60 @@ footer {
         padding-top: 0;
     }
 }
+
+/* ============================================
+   MODERN IMAGE FORMAT SUPPORT
+   ============================================ */
+
+/* Picture element styling */
+picture {
+    display: contents;
+}
+
+picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive images */
+img[srcset] {
+    height: auto;
+    max-width: 100%;
+}
+
+/* Progressive image loading */
+.progressive-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.progressive-image.loading {
+    background: linear-gradient(90deg, var(--darker-bg) 0%, rgba(168,85,247,0.1) 50%, var(--darker-bg) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.progressive-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.progressive-image img.loaded {
+    opacity: 1;
+}
+
+/* Image performance hints */
+img[loading="lazy"] {
+    content-visibility: auto;
+}
+
+/* Fallback for browsers that don't support modern formats */
+@supports not (background-image: url('data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=')) {
+    .webp-only {
+        display: none;
+    }
+}
