@@ -2484,3 +2484,100 @@ footer {
         padding-top: 0;
     }
 }
+
+/* ============================================
+   ACCESSIBILITY ENHANCEMENTS
+   Added for WCAG compliance
+   ============================================ */
+
+/* Skip Link - Hidden until focused */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--purple-electric);
+    color: var(--text-light);
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    z-index: 100000;
+    border-radius: 0 0 8px 0;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid var(--purple-light);
+    outline-offset: 2px;
+}
+
+/* Enhanced Focus Visible Outlines for Interactive Elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--purple-light);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+.nav-links a:focus-visible,
+.language-switcher a:focus-visible,
+.social-links a:focus-visible,
+.mobile-social a:focus-visible {
+    outline: 2px solid var(--purple-light);
+    outline-offset: 3px;
+}
+
+.cta-button:focus-visible,
+.secondary-cta:focus-visible,
+.submit-btn:focus-visible,
+.cookie-btn:focus-visible {
+    outline: 3px solid var(--purple-lighter);
+    outline-offset: 4px;
+}
+
+/* Style for Active Nav Link with aria-current */
+.nav-links > li > a[aria-current="page"] {
+    color: var(--purple-lighter);
+}
+
+.nav-links > li > a[aria-current="page"]::before {
+    width: 100%;
+}
+
+.language-switcher a[aria-current="page"] {
+    color: var(--text-light);
+    background: var(--purple-electric);
+    border-color: var(--purple-electric);
+    box-shadow: 0 4px 15px var(--purple-glow);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .particle {
+        animation: none !important;
+    }
+
+    .bg-gradient {
+        animation: none !important;
+    }
+
+    .hero-content h1,
+    .hero-content .subtitle,
+    .cta-container {
+        animation: none !important;
+    }
+}
