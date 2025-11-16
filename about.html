@@ -37,6 +37,30 @@
     <link rel="alternate" hreflang="sv" href="https://danisphotography.se/sv/about.html">
     <link rel="alternate" hreflang="x-default" href="https://danisphotography.se/about.html">
 
+    <!-- Critical CSS to prevent white flash on navigation -->
+    <style>
+        nav {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 10000 !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        nav * {
+            color: #FFFFFF !important;
+        }
+        body {
+            background-color: #000000;
+            color: #FFFFFF;
+        }
+    </style>
+
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Google Consent Mode Default -->
@@ -49,9 +73,6 @@
     </script>
 </head>
 <body>
-    <!-- Skip link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
     <div class="bg-animation">
         <div class="bg-gradient"></div>
     </div>
@@ -89,7 +110,7 @@
                     <a href="about.html" class="active" aria-current="page">EN</a>
                     <a href="sv/about.html">SV</a>
                 </div>
-                <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" role="button" tabindex="0">
+                <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation menu" role="button" tabindex="0">
                     <span></span>
                     <span></span>
                     <span></span>

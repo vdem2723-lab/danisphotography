@@ -514,15 +514,25 @@
         const toggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
         const overlay = utils.createElement('div', 'mobile-menu-overlay');
+        const mobileSocial = document.querySelector('.mobile-social');
 
         if (!toggle || !navLinks) return;
 
         document.body.appendChild(overlay);
 
+        // Move mobile social icons into menu on mobile
+        if (mobileSocial && window.innerWidth <= 768) {
+            navLinks.appendChild(mobileSocial);
+        }
+
         let focusableElements = [];
         let firstFocusableElement = null;
         let lastFocusableElement = null;
         let previouslyFocusedElement = null;
+
+        // Touch gesture support
+        let touchStartY = 0;
+        let touchEndY = 0;
 
         const updateFocusableElements = () => {
             focusableElements = Array.from(navLinks.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
@@ -558,6 +568,7 @@
             }
         };
 
+        // Click/tap toggle
         toggle.addEventListener('click', () => {
             if (toggle.classList.contains('active')) {
                 closeMenu();
@@ -565,6 +576,35 @@
                 openMenu();
             }
         });
+
+        // Keyboard support for toggle
+        toggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (toggle.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+        });
+
+        // Swipe down to close (mobile gesture)
+        navLinks.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        navLinks.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        const handleSwipe = () => {
+            // Swipe down to close (threshold: 100px)
+            if (touchEndY - touchStartY > 100) {
+                closeMenu();
+            }
+        };
 
         // Focus trap inside menu
         navLinks.addEventListener('keydown', (e) => {
@@ -948,6 +988,30 @@
     }
 
     // ============================================
+    // TESTIMONIAL REVEAL ANIMATION
+    // ============================================
+    function initTestimonialReveal() {
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        if (!testimonialCards.length) return;
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        testimonialCards.forEach(card => {
+            revealObserver.observe(card);
+        });
+    }
+
+    // ============================================
     // INITIALIZATION
     // ============================================
     function init() {
@@ -968,6 +1032,7 @@
             initAccessibility();
             optimizePerformance();
             initVisibilityHandling();
+            initTestimonialReveal();
             scrollToTop.init();
             formHandler.init();
 
