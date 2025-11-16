@@ -3,24 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Danis Photography</title>
-    <meta name="description" content="View our stunning portfolio of photography work including portraits, events, and commercial projects.">
-
+    <title>Contact - Danis Photography</title>
+    <meta name="description" content="Get in touch with Danis Photography for your photography needs.">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://danisphotography.se/portfolio.html">
-    <meta property="og:title" content="Portfolio - Danis Photography">
-    <meta property="og:description" content="View our stunning portfolio of photography work including portraits, events, and commercial projects.">
+    <meta property="og:url" content="https://danisphotography.se/contact.html">
+    <meta property="og:title" content="Contact - Danis Photography">
+    <meta property="og:description" content="Get in touch with Danis Photography for your photography needs.">
     <meta property="og:image" content="https://danisphotography.se/images/og-image.png">
     <meta property="og:site_name" content="Danis Photography">
-        <meta property="og:locale" content="en_GB">
+        <meta property="og:locale" content="en_SE">
         <meta property="og:locale:alternate" content="sv_SE">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://danisphotography.se/portfolio.html">
-    <meta name="twitter:title" content="Portfolio - Danis Photography">
-    <meta name="twitter:description" content="View our stunning portfolio of photography work.">
+    <meta name="twitter:url" content="https://danisphotography.se/contact.html">
+    <meta name="twitter:title" content="Contact - Danis Photography">
+    <meta name="twitter:description" content="Get in touch with Danis Photography for your photography needs.">
     <meta name="twitter:image" content="https://danisphotography.se/images/og-image.png">
 
     <!-- Favicon -->
@@ -32,10 +31,10 @@
     <meta name="theme-color" content="#a855f7">
 
     <!-- Canonical and hreflang -->
-    <link rel="canonical" href="https://danisphotography.se/portfolio.html">
-    <link rel="alternate" hreflang="en" href="https://danisphotography.se/portfolio.html">
-    <link rel="alternate" hreflang="sv" href="https://danisphotography.se/sv/portfolio.html">
-    <link rel="alternate" hreflang="x-default" href="https://danisphotography.se/portfolio.html">
+    <link rel="canonical" href="https://danisphotography.se/contact.html">
+    <link rel="alternate" hreflang="en" href="https://danisphotography.se/contact.html">
+    <link rel="alternate" hreflang="sv" href="https://danisphotography.se/sv/contact.html">
+    <link rel="alternate" hreflang="x-default" href="https://danisphotography.se/contact.html">
 
     <!-- Critical CSS to prevent white flash on navigation -->
     <style>
@@ -51,7 +50,6 @@
             z-index: 10000 !important;
             visibility: visible !important;
             opacity: 1 !important;
-            height: 80px;
         }
         nav * {
             color: #FFFFFF !important;
@@ -59,10 +57,6 @@
         body {
             background-color: #000000;
             color: #FFFFFF;
-            padding-top: 80px;
-        }
-        main {
-            padding-top: 0;
         }
     </style>
 
@@ -78,9 +72,6 @@
     </script>
 </head>
 <body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to content</a>
-    
     <div class="bg-animation">
         <div class="bg-gradient"></div>
     </div>
@@ -93,10 +84,10 @@
             <div class="nav-right">
                 <ul class="nav-links" id="navLinks">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html" class="active" aria-current="page">Portfolio</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
                     <li><a href="services.html">Services</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li></ul>
+                    <li><a href="contact.html" class="active" aria-current="page">Contact</a></li></ul>
                     <div class="mobile-social">
                         <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><title>Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z" /></svg>
@@ -114,8 +105,8 @@
                     </a>
                 </div>
                 <div class="language-switcher" role="navigation" aria-label="Language switcher">
-                    <a href="portfolio.html" class="active" aria-current="page">EN</a>
-                    <a href="sv/portfolio.html">SV</a>
+                    <a href="contact.html" class="active" aria-current="page">EN</a>
+                    <a href="sv/contact.html">SV</a>
                 </div>
                 <div class="mobile-menu-toggle" id="mobileMenuToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle navigation menu" role="button" tabindex="0">
                     <span></span>
@@ -130,52 +121,52 @@
     <div class="page-content">
         <div class="container">
             <div class="page-header">
-                <h2>Portfolio</h2>
-                <p>A curated collection of visual stories</p>
+                <h2>Let's Connect</h2>
+                <p>Ready to create something extraordinary together?</p>
             </div>
-            <div class="gallery">
-                <div class="gallery-item" data-bg="images/1.jpg" role="img" aria-label="Portfolio image 1"></div>
-                <div class="gallery-item" data-bg="images/2.jpg" role="img" aria-label="Portfolio image 2"></div>
-                <div class="gallery-item" data-bg="images/3.jpg" role="img" aria-label="Portfolio image 3"></div>
-                <div class="gallery-item" data-bg="images/4.jpg" role="img" aria-label="Portfolio image 4"></div>
-                <div class="gallery-item" data-bg="images/5.jpg" role="img" aria-label="Portfolio image 5"></div>
-                <div class="gallery-item" data-bg="images/6.jpg" role="img" aria-label="Portfolio image 6"></div>
-                <div class="gallery-item" data-bg="images/7.jpg" role="img" aria-label="Portfolio image 7"></div>
-                <div class="gallery-item" data-bg="images/8.jpg" role="img" aria-label="Portfolio image 8"></div>
-                <div class="gallery-item" data-bg="images/9.jpg" role="img" aria-label="Portfolio image 9"></div>
-                <div class="gallery-item" data-bg="images/10.jpg" role="img" aria-label="Portfolio image 10"></div>
-                <div class="gallery-item" data-bg="images/11.jpg" role="img" aria-label="Portfolio image 11"></div>
-                <div class="gallery-item" data-bg="images/12.jpg" role="img" aria-label="Portfolio image 12"></div>
-                <div class="gallery-item" data-bg="images/13.jpg" role="img" aria-label="Portfolio image 13"></div>
-                <div class="gallery-item" data-bg="images/14.jpg" role="img" aria-label="Portfolio image 14"></div>
-                <div class="gallery-item" data-bg="images/15.jpg" role="img" aria-label="Portfolio image 15"></div>
-                <div class="gallery-item" data-bg="images/16.jpg" role="img" aria-label="Portfolio image 16"></div>
-                <div class="gallery-item" data-bg="images/17.jpg" role="img" aria-label="Portfolio image 17"></div>
-                <div class="gallery-item" data-bg="images/18.jpg" role="img" aria-label="Portfolio image 18"></div>
-                <div class="gallery-item" data-bg="images/19.jpg" role="img" aria-label="Portfolio image 19"></div>
-                <div class="gallery-item" data-bg="images/20.jpg" role="img" aria-label="Portfolio image 20"></div>
-                <div class="gallery-item" data-bg="images/21.jpg" role="img" aria-label="Portfolio image 21"></div>
-                <div class="gallery-item" data-bg="images/22.jpg" role="img" aria-label="Portfolio image 22"></div>
-                <div class="gallery-item" data-bg="images/23.jpg" role="img" aria-label="Portfolio image 23"></div>
-                <div class="gallery-item" data-bg="images/24.jpg" role="img" aria-label="Portfolio image 24"></div>
-                <div class="gallery-item" data-bg="images/25.jpg" role="img" aria-label="Portfolio image 25"></div>
-                <div class="gallery-item" data-bg="images/26.jpg" role="img" aria-label="Portfolio image 26"></div>
-                <div class="gallery-item" data-bg="images/27.jpg" role="img" aria-label="Portfolio image 27"></div>
-                <div class="gallery-item" data-bg="images/28.jpg" role="img" aria-label="Portfolio image 28"></div>
-                <div class="gallery-item" data-bg="images/29.jpg" role="img" aria-label="Portfolio image 29"></div>
-                <div class="gallery-item" data-bg="images/30.jpg" role="img" aria-label="Portfolio image 30"></div>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xqagvodl" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interest</label>
+                        <input type="text" id="service" name="service" placeholder="e.g., Wedding Photography, Portrait Session">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required placeholder="Tell me about your vision..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+
+                <div class="studio-info">
+                    <h3>Home Studio Sessions</h3>
+                    <p>I shoot all my portrait sessions in my cozy home studio, which keeps things relaxed and affordable. It's a chill, comfortable space where you can be yourself and we can focus on getting great shots without the pressure of a big commercial studio.</p>
+                </div>
+
+                <div class="contact-info">
+                    <p>✉ <a href="mailto:info@danisphotography.se">info@danisphotography.se</a></p>
+                    <p>☎ <a href="tel:+46790188864">+46 79 018 88 64</a></p>
+                    <p>📍 <a href="https://maps.google.com/?q=Almstigen+3,+168+69+Bromma" target="_blank" rel="noopener noreferrer">Almstigen 3, 168 69 Bromma</a></p>
+                </div>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Danis Photography. Crafted with passion. | <a href="privacy.html" class="privacy-link">Privacy</a></p>
+            <p>&copy; 2025 Danis Photography. Crafted with passion. | <a href="#" class="privacy-link">Privacy</a></p>
         </div>
     </footer>    </main>
 
 
 
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
