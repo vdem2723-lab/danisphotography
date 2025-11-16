@@ -127,6 +127,40 @@
     };
 
     // ============================================
+    // GOOGLE ANALYTICS LOADER
+    // ============================================
+    const analytics = {
+        loaded: false,
+
+        loadGA: function () {
+            if (this.loaded) return;
+
+            // Inject Google Analytics script
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=G-374987721';
+            document.head.appendChild(script);
+
+            // Initialize gtag
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-374987721');
+
+            this.loaded = true;
+        },
+
+        updateConsent: function (granted) {
+            if (typeof gtag === 'function') {
+                gtag('consent', 'update', {
+                    'analytics_storage': granted ? 'granted' : 'denied'
+                });
+            }
+        }
+    };
+
+    // ============================================
     // GDPR COOKIE CONSENT
     // ============================================
     const cookieConsent = {
@@ -134,7 +168,13 @@
 
         init: function () {
             const persistentConsent = this.getConsent();
-            if (persistentConsent || sessionStorage.getItem('cookieBannerShown')) return;
+            if (persistentConsent) {
+                if (persistentConsent === 'accepted') {
+                    analytics.loadGA();
+                }
+                return;
+            }
+            if (sessionStorage.getItem('cookieBannerShown')) return;
             this.createBanner();
         },
 
@@ -185,11 +225,14 @@
 
         accept: function () {
             this.setConsent('accepted');
+            analytics.updateConsent(true);
+            analytics.loadGA();
             this.hide();
         },
 
         decline: function () {
             this.setConsent('declined');
+            analytics.updateConsent(false);
             this.hide();
         },
 
@@ -476,11 +519,28 @@
 
         document.body.appendChild(overlay);
 
+        let focusableElements = [];
+        let firstFocusableElement = null;
+        let lastFocusableElement = null;
+        let previouslyFocusedElement = null;
+
+        const updateFocusableElements = () => {
+            focusableElements = Array.from(navLinks.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'));
+            firstFocusableElement = focusableElements[0];
+            lastFocusableElement = focusableElements[focusableElements.length - 1];
+        };
+
         const closeMenu = () => {
             toggle.classList.remove('active');
             navLinks.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
+            toggle.setAttribute('aria-expanded', 'false');
+
+            // Restore focus
+            if (previouslyFocusedElement) {
+                previouslyFocusedElement.focus();
+            }
         };
 
         const openMenu = () => {
@@ -488,6 +548,14 @@
             navLinks.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            toggle.setAttribute('aria-expanded', 'true');
+
+            // Store currently focused element and move focus to menu
+            previouslyFocusedElement = document.activeElement;
+            updateFocusableElements();
+            if (firstFocusableElement) {
+                firstFocusableElement.focus();
+            }
         };
 
         toggle.addEventListener('click', () => {
@@ -495,6 +563,27 @@
                 closeMenu();
             } else {
                 openMenu();
+            }
+        });
+
+        // Focus trap inside menu
+        navLinks.addEventListener('keydown', (e) => {
+            if (!toggle.classList.contains('active')) return;
+
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    // Shift + Tab
+                    if (document.activeElement === firstFocusableElement) {
+                        e.preventDefault();
+                        lastFocusableElement.focus();
+                    }
+                } else {
+                    // Tab
+                    if (document.activeElement === lastFocusableElement) {
+                        e.preventDefault();
+                        firstFocusableElement.focus();
+                    }
+                }
             }
         });
 
@@ -549,10 +638,22 @@
     
         navLinks.forEach(link => {
             const linkPage = link.getAttribute('href').split('/').pop() || 'index.html';
-            // Remove any existing active class first
+            // Remove any existing active class and aria-current first
             link.classList.remove('active');
+            link.removeAttribute('aria-current');
             if (linkPage === currentPage) {
                 link.classList.add('active');
+                link.setAttribute('aria-current', 'page');
+            }
+        });
+
+        // Also handle language switcher
+        const langLinks = document.querySelectorAll('.language-switcher a');
+        langLinks.forEach(link => {
+            if (link.classList.contains('active')) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
             }
         });
     }
@@ -869,6 +970,14 @@
             initVisibilityHandling();
             scrollToTop.init();
             formHandler.init();
+
+            // Global handler for privacy links
+            document.addEventListener('click', (e) => {
+                if (e.target.matches('.privacy-link')) {
+                    e.preventDefault();
+                    privacyModal.show();
+                }
+            });
 
         } catch (error) {
             console.error('❌ Error during initialization:', error);
