@@ -64,41 +64,6 @@ html {
     color: var(--text-light);
 }
 
-/* Skip Navigation Link - Accessibility */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--purple-electric);
-    color: var(--text-light);
-    padding: 0.75rem 1.5rem;
-    text-decoration: none;
-    z-index: 100000;
-    border-radius: 0 0 8px 0;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: top 0.3s ease;
-}
-
-.skip-link:focus {
-    top: 0;
-    outline: 2px solid var(--purple-light);
-    outline-offset: 2px;
-}
-
-/* Visually Hidden - Screen reader only */
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-
 /* Animated Background */
 .bg-animation {
     position: fixed;
@@ -767,10 +732,6 @@ nav {
     position: relative;
     z-index: 1;
     font-style: italic;
-}
-
-.testimonial-text p {
-    margin: 0;
 }
 
 .testimonial-author {
@@ -2521,62 +2482,5 @@ footer {
     
     .page-content {
         padding-top: 0;
-    }
-}
-
-/* ============================================
-   MODERN IMAGE FORMAT SUPPORT
-   ============================================ */
-
-/* Picture element styling */
-picture {
-    display: contents;
-}
-
-picture img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Responsive images */
-img[srcset] {
-    height: auto;
-    max-width: 100%;
-}
-
-/* Progressive image loading */
-.progressive-image {
-    position: relative;
-    overflow: hidden;
-}
-
-.progressive-image.loading {
-    background: linear-gradient(90deg, var(--darker-bg) 0%, rgba(168,85,247,0.1) 50%, var(--darker-bg) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-}
-
-.progressive-image img {
-    display: block;
-    width: 100%;
-    height: auto;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.progressive-image img.loaded {
-    opacity: 1;
-}
-
-/* Image performance hints */
-img[loading="lazy"] {
-    content-visibility: auto;
-}
-
-/* Fallback for browsers that don't support modern formats */
-@supports not (background-image: url('data:image/webp;base64,UklGRiQAAABXRUJQVlA4IBgAAAAwAQCdASoBAAEAAwA0JaQAA3AA/vuUAAA=')) {
-    .webp-only {
-        display: none;
     }
 }
