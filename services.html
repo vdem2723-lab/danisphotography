@@ -12,8 +12,8 @@
     <meta property="og:description" content="Professional photography services including portraits, events, and commercial photography.">
     <meta property="og:image" content="https://danisphotography.se/images/og-image.png">
     <meta property="og:site_name" content="Danis Photography">
-        <meta property="og:locale" content="en_SE">
-        <meta property="og:locale:alternate" content="sv_SE">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:locale:alternate" content="sv_SE">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -50,6 +50,7 @@
             z-index: 10000 !important;
             visibility: visible !important;
             opacity: 1 !important;
+            height: 80px;
         }
         nav * {
             color: #FFFFFF !important;
@@ -57,10 +58,68 @@
         body {
             background-color: #000000;
             color: #FFFFFF;
+            padding-top: 80px;
+        }
+        main {
+            padding-top: 0;
         }
     </style>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Service Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Photography Services",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Danis Photography",
+        "url": "https://danisphotography.se",
+        "telephone": "+46790188864",
+        "email": "info@danisphotography.se",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Almstigen 3",
+          "addressLocality": "Bromma",
+          "addressRegion": "Stockholm",
+          "postalCode": "168 69",
+          "addressCountry": "SE"
+        }
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Photography Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Portrait Photography",
+              "description": "Stunning portraits that capture the essence of your unique personality and tell your story through compelling imagery."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Event Photography",
+              "description": "Comprehensive event coverage that preserves every precious moment and emotion of your special occasions."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Photography",
+              "description": "Strategic commercial photography that elevates your brand and drives engagement with professional imagery."
+            }
+          }
+        ]
+      }
+    }
+    </script>
 
     <!-- Google Consent Mode Default -->
     <script>
@@ -72,6 +131,9 @@
     </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    
     <div class="bg-animation">
         <div class="bg-gradient"></div>
     </div>
@@ -185,12 +247,12 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Danis Photography. Crafted with passion. | <a href="#" class="privacy-link">Privacy</a></p>
+            <p>&copy; 2025 Danis Photography. Crafted with passion. | <a href="privacy.html" class="privacy-link">Privacy</a></p>
         </div>
     </footer>    </main>
 
 
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>

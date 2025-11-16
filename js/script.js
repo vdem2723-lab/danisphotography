@@ -495,6 +495,12 @@
         const bgAnimation = document.querySelector('.bg-animation');
         if (!bgAnimation) return;
 
+        // Respect prefers-reduced-motion
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) {
+            return; // Don't create particles if user prefers reduced motion
+        }
+
         const particleCount = utils.isLowEndDevice() ? 15 : 30;
 
         for (let i = 0; i < particleCount; i++) {
@@ -513,6 +519,7 @@
     function initMobileMenu() {
         const toggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
+        const navbar = document.getElementById('navbar');
         const overlay = utils.createElement('div', 'mobile-menu-overlay');
         const mobileSocial = document.querySelector('.mobile-social');
 
@@ -543,6 +550,7 @@
         const closeMenu = () => {
             toggle.classList.remove('active');
             navLinks.classList.remove('active');
+            navbar.classList.remove('open');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
             toggle.setAttribute('aria-expanded', 'false');
@@ -556,6 +564,7 @@
         const openMenu = () => {
             toggle.classList.add('active');
             navLinks.classList.add('active');
+            navbar.classList.add('open');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
             toggle.setAttribute('aria-expanded', 'true');
