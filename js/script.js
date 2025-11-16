@@ -478,7 +478,6 @@
 
         const closeMenu = () => {
             toggle.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
             navLinks.classList.remove('active');
             overlay.classList.remove('active');
             document.body.style.overflow = '';
@@ -486,7 +485,6 @@
 
         const openMenu = () => {
             toggle.classList.add('active');
-            toggle.setAttribute('aria-expanded', 'true');
             navLinks.classList.add('active');
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -849,40 +847,12 @@
     }
 
     // ============================================
-    // SERVICE WORKER REGISTRATION
-    // ============================================
-    function registerServiceWorker() {
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then((registration) => {
-                        console.log('✅ Service Worker registered:', registration.scope);
-                        
-                        // Check for updates
-                        registration.addEventListener('updatefound', () => {
-                            const newWorker = registration.installing;
-                            newWorker.addEventListener('statechange', () => {
-                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    console.log('🔄 New service worker available');
-                                }
-                            });
-                        });
-                    })
-                    .catch((error) => {
-                        console.log('❌ Service Worker registration failed:', error);
-                    });
-            });
-        }
-    }
-
-    // ============================================
     // INITIALIZATION
     // ============================================
     function init() {
         try {
             // Initialize all features
             initPageLoad();
-            registerServiceWorker();
             privacyModal.init();
             cookieConsent.init();
             createParticles();
