@@ -948,6 +948,30 @@
     }
 
     // ============================================
+    // TESTIMONIAL REVEAL ANIMATION
+    // ============================================
+    function initTestimonialReveal() {
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        if (!testimonialCards.length) return;
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        testimonialCards.forEach(card => {
+            revealObserver.observe(card);
+        });
+    }
+
+    // ============================================
     // INITIALIZATION
     // ============================================
     function init() {
@@ -968,6 +992,7 @@
             initAccessibility();
             optimizePerformance();
             initVisibilityHandling();
+            initTestimonialReveal();
             scrollToTop.init();
             formHandler.init();
 
