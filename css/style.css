@@ -2099,11 +2099,18 @@ footer {
         z-index: 10001;
     }
 
+    /* Hide desktop-only elements */
     .social-links {
-        display: none;
+        display: none !important;
     }
 
-    .mobile-social {
+    /* Hide mobile-social when not in menu */
+    .nav-right > .mobile-social {
+        display: none !important;
+    }
+
+    /* Only show in menu when active */
+    .nav-links .mobile-social {
         display: flex;
         gap: 2rem;
         margin-top: 3rem;
@@ -2112,7 +2119,7 @@ footer {
         justify-content: center;
     }
 
-        .mobile-social a {
+        .nav-links .mobile-social a {
             color: var(--text-gray) !important;
             font-size: 1.5rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2152,26 +2159,30 @@ footer {
             }
 
     .language-switcher {
-        margin-left: 1rem;
-        margin-right: 1.5rem;
+        margin-left: auto;
+        margin-right: 0.75rem;
         gap: 0.5rem;
     }
 
         .language-switcher a {
-            padding: 0.6rem 0.8rem;
-            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
             border-radius: 8px;
-            min-width: 44px;
-            min-height: 44px;
+            min-width: 40px;
+            min-height: 40px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
         }
 
     .logo {
-        font-size: 1rem;
-        letter-spacing: 1.5px;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
         white-space: nowrap;
+    }
+
+    .logo .highlight {
+        display: inline;
     }
 
     /* FULL-SCREEN MODERN MOBILE MENU */
@@ -2256,49 +2267,57 @@ footer {
     /* MODERN MOBILE HERO SECTION */
     .hero {
         min-height: 100vh;
-        padding-top: 80px;
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+        padding-top: 120px;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
         display: flex;
         align-items: center;
     }
 
+    .hero-content {
+        width: 100%;
+    }
+
     .hero-content h1 {
-        font-size: 2.5rem;
-        letter-spacing: 3px;
-        line-height: 1.2;
-        margin-bottom: 1rem;
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        line-height: 1.15;
+        margin-bottom: 1.25rem;
+        font-weight: 300;
     }
 
     .hero-content .subtitle {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
         letter-spacing: 1.5px;
         margin-bottom: 2.5rem;
         font-weight: 300;
+        opacity: 0.9;
     }
 
     .cta-container {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.25rem;
         align-items: stretch;
     }
 
     .cta-button {
-        padding: 1.2rem 2rem;
-        font-size: 0.95rem;
-        letter-spacing: 2px;
+        padding: 1.1rem 2rem;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
         width: 100%;
         text-align: center;
         border-radius: 50px;
         box-shadow: 0 8px 24px var(--purple-glow);
+        font-weight: 500;
     }
 
     .secondary-cta {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         padding: 1rem;
         width: 100%;
         text-align: center;
+        font-weight: 400;
     }
 
     .scroll-indicator {
@@ -2461,18 +2480,29 @@ footer {
 
     /* MODERN MOBILE NAVBAR */
     nav {
-        padding: 1rem 1.25rem;
+        padding: 0.875rem 1.25rem;
         background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(20px);
     }
 
         nav.scrolled {
-            padding: 0.8rem 1.25rem;
+            padding: 0.75rem 1.25rem;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
         }
 
         nav .container {
             max-width: 100%;
+            gap: 0.75rem;
+        }
+
+        nav .nav-right {
+            gap: 0;
+            min-width: auto;
+        }
+
+        nav .nav-left {
+            flex: 0 1 auto;
+            min-width: 0;
         }
 
     .scroll-to-top {

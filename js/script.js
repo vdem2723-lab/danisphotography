@@ -514,10 +514,16 @@
         const toggle = document.getElementById('mobileMenuToggle');
         const navLinks = document.getElementById('navLinks');
         const overlay = utils.createElement('div', 'mobile-menu-overlay');
+        const mobileSocial = document.querySelector('.mobile-social');
 
         if (!toggle || !navLinks) return;
 
         document.body.appendChild(overlay);
+
+        // Move mobile social icons into menu on mobile
+        if (mobileSocial && window.innerWidth <= 768) {
+            navLinks.appendChild(mobileSocial);
+        }
 
         let focusableElements = [];
         let firstFocusableElement = null;
