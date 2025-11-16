@@ -28,7 +28,16 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#a855f7">
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Critical CSS - Inlined to prevent FOUC and white flicker -->
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}:root{--purple:#A855F7;--purple-dark:#7C3AED;--purple-light:#C084FC;--purple-lighter:#D8B4FE;--purple-glow:rgba(168,85,247,0.4);--black:#000000;--dark-bg:#0F0F0F;--text-light:#FFFFFF;--text-gray:#EBEBEB;--border-subtle:rgba(168,85,247,0.25)}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background-color:var(--black);color:var(--text-light);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}nav{position:fixed!important;top:0;left:0;right:0;width:100%;background:rgba(0,0,0,0.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);z-index:10000!important;padding:1.5rem 5%;border-bottom:1px solid var(--border-subtle);box-shadow:0 4px 30px rgba(0,0,0,0.5);transform:translate3d(0,0,0);backface-visibility:hidden;-webkit-backface-visibility:hidden;visibility:visible!important;opacity:1!important;contain:layout style}nav .container{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}.logo{font-size:1.2rem;font-weight:600;color:var(--text-light);letter-spacing:2px;text-decoration:none;display:inline-block;white-space:nowrap;backface-visibility:hidden;-webkit-backface-visibility:hidden}.logo .highlight{color:var(--purple-lighter);font-weight:400}.nav-right{display:flex;align-items:center;flex-wrap:nowrap}.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;margin:0;padding:0}.nav-links>li>a{color:var(--text-gray);text-decoration:none;font-size:0.95rem;letter-spacing:0.5px;font-weight:500;white-space:nowrap}.language-switcher{display:flex;gap:0.5rem;align-items:center;margin-left:2.5rem}.language-switcher a{color:var(--text-gray);text-decoration:none;padding:0.5rem 0.8rem;border-radius:8px;font-size:0.9rem;letter-spacing:1px;border:1px solid transparent;font-weight:500}.language-switcher a.active{color:var(--text-light);background:var(--purple);border-color:var(--purple)}.social-links{display:flex;gap:0.5rem;margin-left:2.5rem}.social-links a{color:var(--text-gray);display:flex;padding:0.5rem;border-radius:8px}.bg-animation{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;overflow:hidden;pointer-events:none}.bg-gradient{position:absolute;width:200%;height:200%;background:radial-gradient(circle at 50% 50%,var(--purple-glow) 0%,transparent 40%);animation:rotate 30s linear infinite}@keyframes rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:120px}.hero-content h1{font-size:5rem;font-weight:300;letter-spacing:8px;background:linear-gradient(135deg,var(--text-light) 0%,var(--purple-lighter) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.mobile-menu-toggle{display:none;flex-direction:column;cursor:pointer;padding:0.5rem}.mobile-menu-toggle span{width:25px;height:2px;background:var(--text-light);margin:4px 0;border-radius:2px}@media (max-width:768px){.mobile-menu-toggle{display:flex}.social-links{display:none}.nav-links{position:fixed;top:0;right:0;height:100vh;width:75%;max-width:320px;background:rgba(15,15,15,0.98);backdrop-filter:blur(30px);flex-direction:column;justify-content:center;transform:translateX(100%);border-left:1px solid var(--border-subtle);z-index:999}.hero-content h1{font-size:3rem;letter-spacing:4px}}
+    </style>
+
+    <!-- Preload critical CSS -->
+    <link rel="preload" as="style" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="css/style.css"></noscript>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     
     <!-- Preload hero images for better performance -->
@@ -135,6 +144,112 @@
     }
     </script>
 
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Danis Photography",
+      "url": "https://danisphotography.se",
+      "logo": "https://danisphotography.se/images/Danis.jpg",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+46790188864",
+        "contactType": "Customer Service",
+        "email": "info@danisphotography.se",
+        "areaServed": "SE",
+        "availableLanguage": ["Swedish", "English"]
+      },
+      "sameAs": [
+        "https://www.instagram.com/thisisdanis",
+        "https://www.facebook.com/people/Fotograf-Danis/61583451755900/"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data for Person (Photographer) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Danis",
+      "jobTitle": "Professional Photographer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Danis Photography"
+      },
+      "image": "https://danisphotography.se/images/Danis.jpg",
+      "url": "https://danisphotography.se",
+      "sameAs": [
+        "https://www.instagram.com/thisisdanis",
+        "https://www.facebook.com/people/Fotograf-Danis/61583451755900/"
+      ]
+    }
+    </script>
+
+    <!-- Structured Data for Services/Offers -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Photography Services",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Danis Photography"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Stockholm"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Photography Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Portrait Photography",
+              "description": "Professional portrait photography sessions capturing authentic moments and personality"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Event Photography",
+              "description": "Wedding photography, family portraits, and special event coverage"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial Photography",
+              "description": "Brand campaigns, corporate events, and commercial photography services"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Structured Data for BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://danisphotography.se/"
+        }
+      ]
+    }
+    </script>
+
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-374987721"></script>
     <script>
@@ -145,78 +260,83 @@
     </script>
 </head>
 <body>
-    <div class="bg-animation">
+    <!-- Skip Navigation Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="bg-animation" aria-hidden="true">
         <div class="bg-gradient"></div>
     </div>
 
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <div class="nav-left">
-                <a href="index.html" class="logo">DANIS <span class="highlight">PHOTOGRAPHY</span></a>
+                <a href="index.html" class="logo" aria-label="Danis Photography Home">DANIS <span class="highlight">PHOTOGRAPHY</span></a>
             </div>
             <div class="nav-right">
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <div class="mobile-social">
-                        <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <ul class="nav-links" id="navLinks" role="menubar">
+                    <li role="none"><a href="index.html" class="active" role="menuitem" aria-current="page">Home</a></li>
+                    <li role="none"><a href="portfolio.html" role="menuitem">Portfolio</a></li>
+                    <li role="none"><a href="services.html" role="menuitem">Services</a></li>
+                    <li role="none"><a href="about.html" role="menuitem">About</a></li>
+                    <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+                    <div class="mobile-social" role="group" aria-label="Social media links">
+                        <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><title>Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z" /></svg>
                         </a>
-                        <a href="https://www.facebook.com/people/Fotograf-Danis/61583451755900/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><title>Facebook</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
+                        <a href="https://www.facebook.com/people/Fotograf-Danis/61583451755900/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Facebook</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
                         </a>
                     </div>
                 </ul>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><title>Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z" /></svg>
+                <div class="social-links" role="group" aria-label="Social media links">
+                    <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z" /></svg>
                     </a>
-                    <a href="https://www.facebook.com/people/Fotograf-Danis/61583451755900/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><title>Facebook</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
+                    <a href="https://www.facebook.com/people/Fotograf-Danis/61583451755900/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Facebook</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
                     </a>
                 </div>
-                <div class="language-switcher">
-                    <a href="index.html" class="active">EN</a>
-                    <a href="sv/index.html">SV</a>
+                <div class="language-switcher" role="group" aria-label="Language selection">
+                    <a href="index.html" class="active" aria-current="page" lang="en" hreflang="en">EN</a>
+                    <a href="sv/index.html" lang="sv" hreflang="sv">SV</a>
                 </div>
-                <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="navLinks">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>DANIS PHOTOGRAPHY</h1>
-            <p class="subtitle">CAPTURING MOMENTS • CREATING ART</p>
-            <div class="cta-container">
-                <a href="portfolio.html" class="cta-button">EXPLORE PORTFOLIO</a>
-                <a href="contact.html" class="secondary-cta">Contact me</a>
-                <div class="scroll-indicator"></div>
+    <main id="main-content">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title">DANIS PHOTOGRAPHY</h1>
+                <p class="subtitle">CAPTURING MOMENTS • CREATING ART</p>
+                <div class="cta-container">
+                    <a href="portfolio.html" class="cta-button">EXPLORE PORTFOLIO</a>
+                    <a href="contact.html" class="secondary-cta">Contact me</a>
+                    <div class="scroll-indicator" aria-hidden="true"></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Showcase Section -->
-    <section class="services-showcase">
-        <div class="container">
-            <div class="services-showcase-grid">
-                <!-- Portrait Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index1.jpg');" data-cta="View Portrait Services" role="img" aria-label="Portrait Photography - Professional portrait session example">
-                    <div class="showcase-content">
+        <!-- Services Showcase Section -->
+        <section class="services-showcase" aria-labelledby="services-title">
+            <div class="container">
+                <h2 id="services-title" class="visually-hidden">Our Photography Services</h2>
+                <div class="services-showcase-grid">
+                    <!-- Portrait Photography -->
+                    <a href="services.html#portrait" class="showcase-card" style="background-image: url('images/index1.jpg');" data-cta="View Portrait Services" aria-label="Portrait Photography - Professional portrait session example">
+                        <div class="showcase-content">
                         <h3>Portrait Photography</h3>
                         <p>Raw emotion frozen in time. Capturing the authentic essence of who you are—from intimate studio sessions to bold environmental portraits that reveal your true spirit.</p>
                     </div>
                 </a>
 
                 <!-- Event Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index2.jpg');" data-cta="View Event Services" role="img" aria-label="Event Photography - Wedding and celebration photography example">
+                <a href="services.html#events" class="showcase-card" style="background-image: url('images/index2.jpg');" data-cta="View Event Services" aria-label="Event Photography - Wedding and celebration photography example">
                     <div class="showcase-content">
                         <h3>Event Photography</h3>
                         <p>Life's precious milestones preserved forever. From intimate vows to grand celebrations, every laugh, tear, and tender moment captured with cinematic beauty.</p>
@@ -224,7 +344,7 @@
                 </a>
 
                 <!-- Commercial Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index3.jpg');" data-cta="View Commercial Services" role="img" aria-label="Commercial Photography - Professional brand photography example">
+                <a href="services.html#commercial" class="showcase-card" style="background-image: url('images/index3.jpg');" data-cta="View Commercial Services" aria-label="Commercial Photography - Professional brand photography example">
                     <div class="showcase-content">
                         <h3>Commercial Photography</h3>
                         <p>Visionary storytelling for bold brands. Creative concepts that command attention, executed with precision and artistic flair that elevates your vision.</p>
@@ -235,52 +355,60 @@
     </section>
 
     <!-- Scroll Indicator -->
-    <div class="section-scroll-indicator">
+    <div class="section-scroll-indicator" aria-hidden="true">
         <div class="scroll-arrow"></div>
     </div>
 
     <!-- Testimonials Section -->
-    <section class="testimonials">
+    <section class="testimonials" aria-labelledby="testimonials-title">
         <div class="container">
             <div class="section-header">
-                <h2>Client Stories</h2>
+                <h2 id="testimonials-title">Client Stories</h2>
                 <p>Hear from those who trusted us to capture their moments</p>
             </div>
             <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning and tell our story perfectly. The attention to detail and creative vision exceeded all expectations."</p>
-                    <div class="testimonial-author">
+                <article class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 star rating">★★★★★</div>
+                    <blockquote class="testimonial-text">
+                        <p>"Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning and tell our story perfectly. The attention to detail and creative vision exceeded all expectations."</p>
+                    </blockquote>
+                    <footer class="testimonial-author">
                         <strong>Emma & Johan</strong>
                         <span>Wedding Photography, 2024</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully. We couldn't be happier with the results and the entire experience."</p>
-                    <div class="testimonial-author">
+                    </footer>
+                </article>
+                <article class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 star rating">★★★★★</div>
+                    <blockquote class="testimonial-text">
+                        <p>"Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully. We couldn't be happier with the results and the entire experience."</p>
+                    </blockquote>
+                    <footer class="testimonial-author">
                         <strong>Sara Andersson</strong>
                         <span>Family Portraits, 2024</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Outstanding work for our brand campaign. Danis understood our vision immediately and delivered images that perfectly represent our company values. Highly recommend for commercial projects."</p>
-                    <div class="testimonial-author">
+                    </footer>
+                </article>
+                <article class="testimonial-card">
+                    <div class="testimonial-stars" aria-label="5 star rating">★★★★★</div>
+                    <blockquote class="testimonial-text">
+                        <p>"Outstanding work for our brand campaign. Danis understood our vision immediately and delivered images that perfectly represent our company values. Highly recommend for commercial projects."</p>
+                    </blockquote>
+                    <footer class="testimonial-author">
                         <strong>Marcus Berg</strong>
                         <span>Commercial Photography, 2024</span>
-                    </div>
-                </div>
+                    </footer>
+                </article>
             </div>
         </div>
     </section>
+    </main>
 
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2025 Danis Photography. Crafted with passion.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/soft-navigation.js" defer></script>
 </body>
 </html>
