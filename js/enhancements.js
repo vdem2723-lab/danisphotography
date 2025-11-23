@@ -283,7 +283,14 @@
     function closeLightbox() {
       overlay.classList.remove('is-open');
       document.body.style.overflow = '';
-      if (focusedElement) focusedElement.focus();
+      try {
+        if (focusedElement && focusedElement.focus) {
+          focusedElement.focus();
+        }
+      } catch (e) {
+        // Element may no longer be in DOM or focusable
+        console.debug('Could not restore focus:', e);
+      }
     }
 
     function showImage() {
@@ -371,7 +378,7 @@
     let lastScroll = 0;
     
     window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
+      const currentScroll = window.scrollY;
       
       if (currentScroll > 50) {
         header.classList.add('scrolled');

@@ -532,9 +532,21 @@ footer a:hover {
   color: var(--accent);
 }
 
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
+/* Filter Chips Container */
+.filter-chips {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+/* Testimonial Grid */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
 .quote {
   font-size: var(--text-lg);
   font-style: italic;
