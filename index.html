@@ -28,8 +28,14 @@
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#a855f7">
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets: Theme first, then existing styles -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
     
     <!-- Preload hero images for better performance -->
     <link rel="preload" as="image" href="images/index1.jpg" fetchpriority="high">
@@ -145,142 +151,199 @@
     </script>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Background Animation (from existing styles) -->
     <div class="bg-animation">
         <div class="bg-gradient"></div>
     </div>
 
-    <nav id="navbar">
+    <!-- Sticky Header with Navigation -->
+    <header class="site-header" id="site-header">
         <div class="container">
-            <div class="nav-left">
-                <a href="index.html" class="logo">DANIS <span class="highlight">PHOTOGRAPHY</span></a>
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">DANIS PHOTOGRAPHY</span>
+                </a>
+                <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+                    &#9776;
+                </button>
+                <nav id="nav-menu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" aria-current="page">Home</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="btn btn-ghost">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            <div class="nav-right">
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="services.html">Services</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <div class="mobile-social">
-                        <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><title>Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z" /></svg>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>CAPTURING MOMENTS, CREATING ART</h1>
+                <p class="lead">Stockholm's premier photography studio specializing in portraits, events, and commercial work that tells your unique story.</p>
+                <div class="cta-group">
+                    <a href="portfolio.html" class="btn btn-accent">Explore Portfolio</a>
+                    <a href="contact.html" class="btn btn-ghost">Book a Session</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Work Section -->
+        <section class="section" id="featured-work">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Featured Work</h2>
+                    <p>Discover our latest photography projects</p>
+                </div>
+                
+                <!-- Category Filters -->
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+                    <button class="chip is-active" data-filter="all">All</button>
+                    <button class="chip" data-filter="portrait">Portraits</button>
+                    <button class="chip" data-filter="wedding">Weddings</button>
+                    <button class="chip" data-filter="commercial">Commercial</button>
+                </div>
+
+                <!-- Gallery Grid -->
+                <div class="gallery-grid">
+                    <!-- Sample Card: Portrait -->
+                    <article class="card" data-category="portrait">
+                        <a href="images/index1.jpg" class="lightbox" data-lightbox="gallery" data-caption="Professional Portrait Session">
+                            <div class="card-image">
+                                <picture>
+                                    <source 
+                                        type="image/webp" 
+                                        srcset="images/index1.jpg 800w, images/index1.jpg 1200w" 
+                                        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    >
+                                    <img 
+                                        src="images/index1.jpg" 
+                                        srcset="images/index1.jpg 800w, images/index1.jpg 1200w"
+                                        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        alt="Professional portrait photography session" 
+                                        width="800" 
+                                        height="1000"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                            </div>
                         </a>
-                        <a href="https://www.facebook.com/people/Fotograf-Danis/61583451755900/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><title>Facebook</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
+                        <div class="card-body">
+                            <h3 class="card-title">Portrait Session</h3>
+                            <p class="card-text">Capturing authentic moments and genuine emotions</p>
+                        </div>
+                    </article>
+
+                    <!-- Sample Card: Wedding -->
+                    <article class="card" data-category="wedding">
+                        <a href="images/index2.jpg" class="lightbox" data-lightbox="gallery" data-caption="Wedding Photography">
+                            <div class="card-image">
+                                <picture>
+                                    <source 
+                                        type="image/webp" 
+                                        srcset="images/index2.jpg 800w, images/index2.jpg 1200w" 
+                                        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    >
+                                    <img 
+                                        src="images/index2.jpg" 
+                                        srcset="images/index2.jpg 800w, images/index2.jpg 1200w"
+                                        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        alt="Wedding photography capturing special moments" 
+                                        width="800" 
+                                        height="1000"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                            </div>
                         </a>
-                    </div>
-                </ul>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/thisisdanis?igsh=MW43NGw0dmx1cG9yeQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><title>Instagram</title><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.40s-.644-1.44-1.439-1.40z" /></svg>
-                    </a>
-                    <a href="https://www.facebook.com/people/Fotograf-Danis/61583451755900/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><title>Facebook</title><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" /></svg>
-                    </a>
-                </div>
-                <div class="language-switcher">
-                    <a href="index.html" class="active">EN</a>
-                    <a href="sv/index.html">SV</a>
-                </div>
-                <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-        </div>
-    </nav>
+                        <div class="card-body">
+                            <h3 class="card-title">Wedding Day</h3>
+                            <p class="card-text">Every laugh, tear, and tender moment preserved forever</p>
+                        </div>
+                    </article>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>DANIS PHOTOGRAPHY</h1>
-            <p class="subtitle">CAPTURING MOMENTS • CREATING ART</p>
-            <div class="cta-container">
-                <a href="portfolio.html" class="cta-button">EXPLORE PORTFOLIO</a>
-                <a href="contact.html" class="secondary-cta">Contact me</a>
-                <div class="scroll-indicator"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Showcase Section -->
-    <section class="services-showcase">
-        <div class="container">
-            <div class="services-showcase-grid">
-                <!-- Portrait Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index1.jpg');" data-cta="View Portrait Services" role="img" aria-label="Portrait Photography - Professional portrait session example">
-                    <div class="showcase-content">
-                        <h3>Portrait Photography</h3>
-                        <p>Raw emotion frozen in time. Capturing the authentic essence of who you are—from intimate studio sessions to bold environmental portraits that reveal your true spirit.</p>
-                    </div>
-                </a>
-
-                <!-- Event Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index2.jpg');" data-cta="View Event Services" role="img" aria-label="Event Photography - Wedding and celebration photography example">
-                    <div class="showcase-content">
-                        <h3>Event Photography</h3>
-                        <p>Life's precious milestones preserved forever. From intimate vows to grand celebrations, every laugh, tear, and tender moment captured with cinematic beauty.</p>
-                    </div>
-                </a>
-
-                <!-- Commercial Photography -->
-                <a href="services.html" class="showcase-card" style="background-image: url('images/index3.jpg');" data-cta="View Commercial Services" role="img" aria-label="Commercial Photography - Professional brand photography example">
-                    <div class="showcase-content">
-                        <h3>Commercial Photography</h3>
-                        <p>Visionary storytelling for bold brands. Creative concepts that command attention, executed with precision and artistic flair that elevates your vision.</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Scroll Indicator -->
-    <div class="section-scroll-indicator">
-        <div class="scroll-arrow"></div>
-    </div>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Client Stories</h2>
-                <p>Hear from those who trusted us to capture their moments</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning and tell our story perfectly. The attention to detail and creative vision exceeded all expectations."</p>
-                    <div class="testimonial-author">
-                        <strong>Emma & Johan</strong>
-                        <span>Wedding Photography, 2024</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully. We couldn't be happier with the results and the entire experience."</p>
-                    <div class="testimonial-author">
-                        <strong>Sara Andersson</strong>
-                        <span>Family Portraits, 2024</span>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-stars">★★★★★</div>
-                    <p class="testimonial-text">"Outstanding work for our brand campaign. Danis understood our vision immediately and delivered images that perfectly represent our company values. Highly recommend for commercial projects."</p>
-                    <div class="testimonial-author">
-                        <strong>Marcus Berg</strong>
-                        <span>Commercial Photography, 2024</span>
-                    </div>
+                    <!-- Sample Card: Commercial -->
+                    <article class="card" data-category="commercial">
+                        <a href="images/index3.jpg" class="lightbox" data-lightbox="gallery" data-caption="Commercial Photography">
+                            <div class="card-image">
+                                <picture>
+                                    <source 
+                                        type="image/webp" 
+                                        srcset="images/index3.jpg 800w, images/index3.jpg 1200w" 
+                                        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                    >
+                                    <img 
+                                        src="images/index3.jpg" 
+                                        srcset="images/index3.jpg 800w, images/index3.jpg 1200w"
+                                        sizes="(max-width: 800px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        alt="Commercial photography for brands" 
+                                        width="800" 
+                                        height="1000"
+                                        loading="lazy"
+                                    >
+                                </picture>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <h3 class="card-title">Brand Campaign</h3>
+                            <p class="card-text">Visionary storytelling for bold brands</p>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Testimonial Band -->
+        <section class="section tinted">
+            <div class="container">
+                <div class="section-head">
+                    <h2>What Clients Say</h2>
+                    <p>Trusted by clients across Stockholm</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <blockquote class="quote">
+                        "Danis has an incredible eye for capturing authentic moments. Our wedding photos are absolutely stunning."
+                        <footer>— Emma & Johan</footer>
+                    </blockquote>
+                    <blockquote class="quote">
+                        "Professional, creative, and so easy to work with. The family portraits captured our children's personalities beautifully."
+                        <footer>— Sara Andersson</footer>
+                    </blockquote>
+                    <blockquote class="quote">
+                        "Outstanding work for our brand campaign. Highly recommend for commercial projects."
+                        <footer>— Marcus Berg</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strong CTA Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Create Something Beautiful?</h2>
+                <p>Let's bring your vision to life with stunning photography that captures your unique story.</p>
+                <a href="contact.html" class="btn btn-accent">Get in Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Danis Photography. Crafted with passion.</p>
+            <p>&copy; <span id="year">2025</span> Danis Photography. Crafted with passion.</p>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Scripts: Existing first, then enhancements -->
+    <script src="js/script.js" defer></script>
+    <script src="js/enhancements.js" defer></script>
 </body>
 </html>
